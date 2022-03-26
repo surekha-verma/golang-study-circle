@@ -1,0 +1,44 @@
+package function
+
+func PrintFunctionExapmles() {
+
+	// Initializing the fields
+	// of the structure
+	result := Author{
+		name:      "Surekha",
+		language:  "Java",
+		Marticles: 120,
+		Pay:       500,
+		salary: func(Ma int, pay int) int {
+			return Ma * pay
+		},
+	}
+
+	// Display values
+	fmt.Println("Author's Name: ", result.name)
+	fmt.Println("Language: ", result.language)
+	fmt.Println("Total number of articles published in May: ", result.Marticles)
+	fmt.Println("Per article pay: ", result.Pay)
+	fmt.Println("Total salary: ", result.salary(result.Marticles, result.Pay))
+}
+
+// Main method
+func PrintAnonymousFunctionExapmles() {
+
+	result := AuthorWithAnonymousFunc{
+		name:      "Surekha",
+		language:  "Java",
+		Tarticles: 340,
+		Particles: 259,
+		Pending: func(Ta int, Pa int) int {
+			return Ta - Pa
+		},
+	}
+
+	// Display values
+	fmt.Println("Author's Name: ", result.name)
+	fmt.Println("Language: ", result.language)
+	fmt.Println("Total number of articles published in May: ", result.Tarticles)
+	fmt.Println("Per article pay: ", result.Particles)
+	fmt.Println("Total salary: ", result.Pending(result.Tarticles, result.Particles))
+}
