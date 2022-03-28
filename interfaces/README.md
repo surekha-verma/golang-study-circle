@@ -28,98 +28,98 @@ Here, the receiver can be of struct type or non-struct type.
 ## Become a type which behaves like an interface
 Struct type receiver
 
-    ```console
-    type Animal interface {
-        Speak() string
-    }
+```console
+type Animal interface {
+    Speak() string
+}
 
-    type Dog struct {
-    }
+type Dog struct {
+}
 
-    func (d Dog) Speak() string {
-        return "Woof!"
-    }
+func (d Dog) Speak() string {
+    return "Woof!"
+}
 
-    type Cat struct {
-    }
+type Cat struct {
+}
 
-    func (c Cat) Speak() string {
-        return "Meow!"
-    }
+func (c Cat) Speak() string {
+    return "Meow!"
+}
 
-    type JavaProgrammer struct {
-    }
+type JavaProgrammer struct {
+}
 
-    func (j JavaProgrammer) Speak() string {
-        return "Design patterns!"
-    }
+func (j JavaProgrammer) Speak() string {
+    return "Design patterns!"
+}
 
-    func main() {
-        animals := []Animal{Dog{}, Cat{}, JavaProgrammer{}}
-        for _, animal := range animals {
-            fmt.Println(animal.Speak())
-        }
+func main() {
+    animals := []Animal{Dog{}, Cat{}, JavaProgrammer{}}
+    for _, animal := range animals {
+        fmt.Println(animal.Speak())
     }
-    ```
+}
+```
 
 You are allowed to create a method with a pointer receiver.
 
-    ```console
-    type Animal interface {
-        Speak() string
-    }
+```console
+type Animal interface {
+    Speak() string
+}
 
-    type Dog struct {
-    }
+type Dog struct {
+}
 
-    func (d *Dog) Speak() string {
-        return "Woof!"
-    }
+func (d *Dog) Speak() string {
+    return "Woof!"
+}
 
-    type Cat struct {
-    }
+type Cat struct {
+}
 
-    func (c Cat) Speak() string {
-        return "Meow!"
-    }
+func (c Cat) Speak() string {
+    return "Meow!"
+}
 
-    func main() {
-        animals := []Animal{new(Dog), Cat{}}
-        for _, animal := range animals {
-            fmt.Println(animal.Speak())
-        }
+func main() {
+    animals := []Animal{new(Dog), Cat{}}
+    for _, animal := range animals {
+        fmt.Println(animal.Speak())
     }
-    ```
+}
+```
 
 
 Go method can accept both value and pointer, whether it is defined with pointer or value receiver.
 
-    ```console
-    type Animal interface {
-        Speak() string
-    }
+```console
+type Animal interface {
+    Speak() string
+}
 
-    type Dog struct {
-    }
+type Dog struct {
+}
 
-    func (d *Dog) Speak() string {
-        return "Woof!"
-    }
+func (d *Dog) Speak() string {
+    return "Woof!"
+}
 
-    type Cat struct {
-    }
+type Cat struct {
+}
 
-    func (c Cat) Speak() string {
-        return "Meow!"
-    }
+func (c Cat) Speak() string {
+    return "Meow!"
+}
 
-    func main() {
-        animals := []Animal{new(Dog), new(Cat)}
-        for _, animal := range animals {
-            fmt.Println(animal.Speak())
-        }
+func main() {
+    animals := []Animal{new(Dog), new(Cat)}
+    for _, animal := range animals {
+        fmt.Println(animal.Speak())
     }
-    ```
+}
+```
 
 ## The interface{} type - empty Interfaces
 
@@ -127,18 +127,18 @@ The interface{} type is the interface that has no methods. Since there is no imp
 
 That means that if you write a function that takes an interface{} value as a parameter, you can supply that function with any value.  This function will accept any paramter whatsoever
 
-    ```console
-    func DoSomething(val interface{}) {
-        fmt.Println(val);
-    }
+```console
+func DoSomething(val interface{}) {
+    fmt.Println(val);
+}
 
-    func main() {
-        names := "stanley"
+func main() {
+    names := "stanley"
 
-        DoSomething(names);
-    }
+    DoSomething(names);
+}
 
-    ```
+```
 
 All values have exactly one type at runtime, and v’s one static type is interface{}.
 
@@ -148,31 +148,31 @@ In Go, Interfaces are checked at compile time. If the signature(behaviour) match
 
 ## Can be checked at runtime too
 
-    ```console
-    type Stringer interface {
-        String() string
-    }
+```console
+type Stringer interface {
+    String() string
+}
 
-    func ToString(any interface{}) string {
-        if v, ok := any.(Stringer); ok {
-            return v.String()
-        }
-        switch v := any.(type) {
-        case int:
-            return strconv.Itoa(v)
-        case float32:
-            return fmt.Sprintf("%f", v)
-        }
-        return "???"
+func ToString(any interface{}) string {
+    if v, ok := any.(Stringer); ok {
+        return v.String()
     }
+    switch v := any.(type) {
+    case int:
+        return strconv.Itoa(v)
+    case float32:
+        return fmt.Sprintf("%f", v)
+    }
+    return "???"
+}
 
-    func main() {
-        fmt.Println(ToString("Surekha"));
-        fmt.Println(ToString(123));
-        fmt.Println(ToString(10.10));
-    }
+func main() {
+    fmt.Println(ToString("Surekha"));
+    fmt.Println(ToString(123));
+    fmt.Println(ToString(10.10));
+}
 }
 
 
-    ```
+```
 
