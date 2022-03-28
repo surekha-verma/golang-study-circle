@@ -1,10 +1,7 @@
 package function
 
 /**
-type function_name func()
-type strcut_name struct{
-  var_name  function_name
-}
+Function as a Field in Golang Structure
 **/
 
 // Finalsalary of function type

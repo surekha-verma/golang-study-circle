@@ -2,14 +2,29 @@ package main
 
 import (
 	"errors"
-	slice "exerciseModule/slices"
+	function "exerciseModule/functions"
 	"fmt"
 	"strconv"
 )
 
 func main() {
-	slice.GetSlices();
-	slice.SumOfLetters("abd");
+
+	function.PrintMethods()
+	function.PrintMethodPointerReceiver()
+	function.PrintMethodAcceptPointersAndValues()
+
+	//interfaces.
+
+	/**slice
+	**/
+	//slice.GetSlices();
+	//slice.SumOfLetters("abd");
+
+	//testAddContact();
+
+}
+
+func testAddContact() {
 	err := addContact("first", "last", "phone")
 	if err != nil {
 		fmt.Println("error while adding contact: " + err.Error())
