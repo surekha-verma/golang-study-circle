@@ -2,11 +2,11 @@
 
 An interface is two things: it is a set of methods, but it is also a type. 
 
-    ```console
-    type Animal interface {
-        Speak() string
-    }
-    ```
+```console
+type Animal interface {
+    Speak() string
+}
+```
 
 Go's interfaces — are static, checked at compile time, dynamic when asked for.
 
