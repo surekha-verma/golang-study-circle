@@ -7,7 +7,35 @@ import (
 	"strconv"
 )
 
+func DoSomething(val interface{}) {
+	fmt.Println(val)
+}
+
+type Stringer interface {
+	String() string
+}
+
+func ToString(any interface{}) string {
+	if v, ok := any.(Stringer); ok {
+		return v.String()
+	}
+	switch v := any.(type) {
+	case int:
+		return strconv.Itoa(v)
+	case float32:
+		return fmt.Sprintf("%f", v)
+	}
+	return "???"
+}
+
 func main() {
+
+	fmt.Println(ToString("Surekha"))
+	fmt.Println(ToString(123))
+	fmt.Println(ToString(22.23))
+
+	names := "stanley"
+	DoSomething(names)
 
 	function.PrintMethods()
 	function.PrintMethodPointerReceiver()
