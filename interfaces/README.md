@@ -10,23 +10,22 @@ type <interface_name> interface {
 }
 ```
 
-Interfaces you use duck typing like you would in a purely dynamic language like Python, but compile time checked.
-Duck typing 
+Interfaces use duck typing like you would in a purely dynamic language like Python, but compile time checked.
 
 Go's interfaces — are static, checked at compile time, dynamic when asked for.
 
 
-## Go Methods
+### Go Methods
 Go does not have classes. However, you can define methods on types.
-A method is a function with a special receiver argument.
+A method is a function with a special **receiver** argument.
 
-The parenthesis before the function name is the Go way of defining the object on which these functions will operate
+The parenthesis before the function name is the Go way of defining the object on which these functions will operate.
 With the help of the receiver argument, the method can access the properties of the receiver. 
 
-Here, the receiver can be of struct type or non-struct type.
+The receiver can be of struct type or non-struct type.
 
 
-### Interfaces set of Methods and also a Type.
+### Interfaces - set of Methods and also a Type.
 
 ```console
 package main
@@ -71,12 +70,12 @@ func main() {
 }
 ```
 
+### Go Interface slice
+
 You are allowed to create a method with a pointer receiver.
 
 Go method can accept both value and pointer, whether it is defined with pointer or value receiver.
 
-
-### Go Interface slice
 
 ```console
 package main
@@ -122,7 +121,7 @@ func main() {
 ```
 
 ### Go Stringer interface
-The Stringer interface is defined in the fmt package. Its String function is invoked when a type is passed to any of the print functions. We can customize the output message of our own types.
+The **Stringer** interface is defined in the **fmt** package. Its String function is invoked when a type is passed to any of the print functions. We can customize the output message of our own types.
 
 ```console
 type Stringer interface {
@@ -183,7 +182,9 @@ func main() {
 
 ### Array of empty Interfaces
 
-Map with string type keys and interface{} for values
+Map with string type keys and interface{} for values. It's a little different than expected behavior.
+In reality, this doesn’t come up very often, because []interface{} turns out to be less useful than you would initially expect
+
 
 ```console
 package main
