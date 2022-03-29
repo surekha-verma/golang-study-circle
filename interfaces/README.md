@@ -27,6 +27,8 @@ The receiver can be of struct type or non-struct type.
 
 ### Interfaces - set of Methods and also a Type.
 
+Go method can accept both value and pointer, whether it is defined with pointer or value receiver.
+
 ```console
 package main
 
@@ -74,8 +76,7 @@ func main() {
 
 You are allowed to create a method with a pointer receiver.
 
-Go method can accept both value and pointer, whether it is defined with pointer or value receiver.
-
+Within the Animals slice, each element is of Animal type, but our different values have different underlying types.
 
 ```console
 package main
@@ -180,9 +181,10 @@ func main() {
 }
 ```
 
-### Array of empty Interfaces
+### Slice of empty Interfaces
 
-Map with string type keys and interface{} for values. It's a little different than expected behavior.
+It's a little different than expected behavior.
+
 In reality, this doesn’t come up very often, because []interface{} turns out to be less useful than you would initially expect
 
 
@@ -211,7 +213,10 @@ func main() {
 ```
 
 ### Go type check with interfaces - runtime type check
-Go interfaces and its duck types are checked at compile time, but we can also check for the type of interface at runtime. 
+Go interfaces and its duck types are checked at compile time, but we can also check for the type of interface at runtime.
+**x.(type)** returns the concrete type of value stored in **x** 
+
+A type switch is used to compare the concrete type of an interface with the multiple types provide in the case statements.
 
 ```console
 package main
@@ -249,7 +254,7 @@ func main() {
 }
 ```
 ### Go assertion on interface
-The type assertion x.(T) asserts that the concrete value stored in x is of type T, and that x is not nil.
+The type assertion **x.(T)** asserts that the concrete value stored in **x** is of type **T**, and that x is not nil.
 
 ```console
 package main

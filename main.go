@@ -1,88 +1,42 @@
 package main
 
 import (
-	"errors"
-	function "exerciseModule/functions"
 	"fmt"
-	"strconv"
+	"math"
 )
 
-func DoSomething(val interface{}) {
-	fmt.Println(val)
+type Shape interface {
+	Area() float64
 }
 
-type Stringer interface {
-	String() string
+type Rectangle struct {
+	Width, Height float64
 }
 
-func ToString(any interface{}) string {
-	if v, ok := any.(Stringer); ok {
-		return v.String()
-	}
-	switch v := any.(type) {
-	case int:
-		return strconv.Itoa(v)
-	case float32:
-		return fmt.Sprintf("%f", v)
-	}
-	return "???"
+type Circle struct {
+	Radius float64
+}
+
+func (r Rectangle) Area() float64 {
+	return r.Width * r.Height
+}
+
+func (c *Circle) Area() float64 {
+	return math.Pi * c.Radius * c.Radius
+}
+
+func getArea(shape Shape) {
+
+	fmt.Println(shape.Area())
 }
 
 func main() {
 
-	fmt.Println(ToString("Surekha"))
-	fmt.Println(ToString(123))
-	fmt.Println(ToString(22.23))
+	r := Rectangle{Width: 7, Height: 8}
+	c := Circle{Radius: 5}
 
-	names := "stanley"
-	DoSomething(names)
-
-	function.PrintMethods()
-	function.PrintMethodPointerReceiver()
-	function.PrintMethodAcceptPointersAndValues()
-
-	//interfaces.
-
-	/**slice
-	**/
-	//slice.GetSlices();
-	//slice.SumOfLetters("abd");
-
-	//testAddContact();
-
-}
-
-func testAddContact() {
-	err := addContact("first", "last", "phone")
-	if err != nil {
-		fmt.Println("error while adding contact: " + err.Error())
-	} else {
-		fmt.Println("contact added successfully")
-	}
-}
-
-func addContact(firstName string, lastName string, phone string) error {
-	if firstName == "" {
-		return errors.New("first name cannot be blank")
-	}
-
-	if lastName == "" {
-		return errors.New("last name cannot be blank")
-	}
-
-	switch {
-	case phone == "":
-		return errors.New("phone cannot be blank")
-	case len(phone) < 10:
-		return errors.New("phone number should be of atleast 10 digits")
-	case phone[0:1] != "0":
-		return errors.New("phone number should start with zero")
-	default:
-		_, err := strconv.Atoi(phone)
-		if err != nil {
-			return errors.New("phone number should only be numeric: " + err.Error())
-		}
-	}
-
-	return nil
+	getArea(&r)
+	getArea(&c)
+	getArea(new(Circle))
+	getArea(new(Rectangle))
 }
