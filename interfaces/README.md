@@ -25,7 +25,7 @@ With the help of the receiver argument, the method can access the properties of 
 The receiver can be of struct type or non-struct type.
 
 
-### Interfaces - set of Methods and also a Type.
+### Interfaces - set of Methods and also a Type (receiver of struct type)
 
 Go method can accept both value and pointer, whether it is defined with pointer or value receiver.
 
@@ -71,6 +71,7 @@ func main() {
     getArea(c)
 }
 ```
+
 
 ### Go Interface slice
 
@@ -281,3 +282,70 @@ func main() {
 }
 ```
 
+### struct type receiver for Method
+
+A method is just a function with a special receiver type between the func keyword and the method name. The receiver can either be a struct type or non-struct type.
+
+The syntax of a method declaration is provided below.
+
+```console
+func (t Type) methodName(parameter list) {  
+}
+```
+
+Example method on a struct type receivers.
+
+```console
+package main
+
+import (  
+    "fmt"
+)
+
+type Employee struct {  
+    name     string
+    salary   int
+    currency string
+}
+
+/*
+ displaySalary() method has Employee as the receiver type
+*/
+func (e Employee) displaySalary() {  
+    fmt.Printf("Salary of %s is %s%d", e.name, e.currency, e.salary)
+}
+
+func main() {  
+    emp1 := Employee {
+        name:     "Sam Adolf",
+        salary:   5000,
+        currency: "$",
+    }
+    emp1.displaySalary() //Calling displaySalary() method of Employee type
+}
+```
+
+### non-struct type receiver for Mehtods
+Methods can also be defined on a non-struct custom type. Non-struct custom types can be created through type definition.
+
+Methods can be defined on the named custom type.
+
+```console
+package main
+
+import (
+    "fmt"
+    "math"
+)
+
+type myFloat float64
+
+func (m myFloat) ceil() float64 {
+    return math.Ceil(float64(m))
+}
+
+func main() {
+    num := myFloat(1.4)
+    fmt.Println(num.ceil())
+}
+```
