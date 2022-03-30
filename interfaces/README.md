@@ -14,6 +14,13 @@ Interfaces use duck typing like you would in a purely dynamic language like Pyth
 
 Go's interfaces — are static, checked at compile time, dynamic when asked for.
 
+1. Interfces and duck typing
+2. Interface slice
+3. The Stringer interface
+4. Empty interface
+5. Slice of enpty interface
+6. Type check and assertions on interfaces
+7. Methods in Go
 
 ### Go Methods
 Go does not have classes. However, you can define methods on types.
@@ -25,7 +32,7 @@ With the help of the receiver argument, the method can access the properties of 
 The receiver can be of struct type or non-struct type.
 
 
-### Interfaces - set of Methods and also a Type (receiver of struct type)
+### Interfaces - set of Methods and also a Type
 
 Go method can accept both value and pointer, whether it is defined with pointer or value receiver.
 
